@@ -1,8 +1,7 @@
-#Importing
+#Importing cv2 numpy and math module.
 import cv2
-import numpy as np
+import numpy as npy
 import math
-
 
 vid = cv2.VideoCapture(0)
 
@@ -19,12 +18,12 @@ while True:
     imgGray = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2GRAY)
     imgHSV = cv2.cvtColor(imgBlur, cv2.COLOR_BGR2HSV)
 
-    lower = np.array([2,0,0])
-    upper = np.array([20,255,255])
+    lower = npy.array([2,0,0])
+    upper = npy.array([20,255,255])
     mask = cv2.inRange(imgHSV, lower, upper)
 
     #Kernel for morphological transformation
-    kernel = np.ones((5,5))
+    kernel = npy.ones((5,5))
 
     #Apply morphological transforamtions to filter out the background noise
     dilation = cv2.dilate(mask,kernel, iterations=1)
